@@ -1,0 +1,11 @@
+{
+  "name": "angular-socket-io-im",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.10",
+    "http-proxy": "^1.16.2",
+    "jade": ">= 0.26.1",
+    "socket.io": ">= 0.9.6"
+  }
+}
