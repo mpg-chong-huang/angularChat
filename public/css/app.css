@@ -1,20 +1,160 @@
 /* app css stylesheet */
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 
-.overflowable {
-  height: 240px;
+body{
+	font-family: 'Raleway', sans-serif;
+	background: #eee;
+	background-color: #eee;
+}
+input, a, table{
+	font-family: 'Raleway', sans-serif;
+}
+
+.app{
+ 	width:622px;
+ 	overflow: hidden;
+	background: #fff;
+	background-color: #fff;
+}
+
+.msg-box {
+  	float: left;
+ 	width:400px;
+ 	padding: 10px;
+  	border-left: 1px solid #eee;
+  	border-right: 1px solid #eee;
+}
+
+.msg-box .overflowable {
+  height: 320px;
   overflow-y: auto;
-  border: 1px solid #000;
+}
+.msg{
+	display: list-item;
+    text-align: -webkit-match-parent;
+}
+.msg-list{
+	float: left;
+	width: 200px;
+}
+.msg-list .operate{
+	height: 30px;
+  	border-bottom: 1px solid #eee;
+	position: relative;
+}
+.msg-list .overflowable {
+  height: 325px;
+  overflow-y: auto;
+}
+.operate .title{
+	padding: 0px 6px 0px 8px;
+	line-height: 30px;
+	font-weight: 700;
+	height: 30px;
+	float: left;
+	max-width: 100px;
+	overflow: hidden;
+}
+.operate .oper-list{
+	position: absolute;
+	right: 0;
+}
+	.oper-list i{
+		padding: 8px;
+		cursor: pointer;
+		display: block;
+	}
+
+.msg-list .user{
+	padding: 6px 8px;
+}
+.user-online:before{
+	content: '';
+	width: 8px;
+	height: 8px;
+	border-radius:5px;
+	margin: 5px 8px 5px 0;
+	float: left;
+	background: #00bd71;
+	background-color: #00bd71;
+}
+.user:hover{
+	background: #f6f6f6;
+	background-color: #f6f6f6;
+	color:#00bd71;
+}
+.msg-list .user:hover{
+
 }
 
-.overflowable p {
-  margin: 0;
+.msg-send{
+	border-top: 1px solid #eee;
+	padding-top: 10px;
+}
+.msg-send .m{
+	width: 300px;
+	padding:8px 10px;
+	font-size: 1em;
+	border: none;
+	opacity: .3;
+}
+.msg-send .m:focus{    
+	outline:none;
+	opacity: 1;
+}
+.msg-send .s{
+	width: 70px;
+	height: 34px;
+	font-size: 1em;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	background: #00bd71;
+	background-color: #00bd71;
+	cursor: pointer;
+}
+.msg-send .s:hover{
+	background: #00db83;
+	background-color: #00db83;
 }
 
-.col {
-  float: left;
-  width: 350px;
+.change-name{
+	background: #fff;
+	padding: 8px;
+	float: left;
+}
+	.change-name input.newName{
+		width: 163px;
+		padding:10px;
+		font-size: 1em;
+		border: none;
+		border-bottom: 1px solid #eee;
+		margin-bottom: 30px;
+		margin-top: 30px;
+	}
+	.change-name input.submitName{
+		padding: 8px 10px;
+		font-size: 1em;
+		border: none;
+		border-radius: 5px;
+		color: #fff;
+		float: right;
+		background: #4298cc;
+		background-color: #4298cc;
+		cursor: pointer;
+	}
+	.change-name input.submitName:hover{
+		background: #4caae2;
+		background-color: #4caae2;
+	}
+.version{
+	padding: 8px;
+	font-size: .7em;
+	text-align: right;
+  	border-top: 1px solid #eee;
+	border-radius: 5px;
 }
 
-.clr {
-  clear: both;
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }

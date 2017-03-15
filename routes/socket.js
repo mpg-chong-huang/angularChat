@@ -1,5 +1,6 @@
 // Keep track of which names are used so that there are no duplicates
 var userNames = (function () {
+  
   var names = {};
 
   var claim = function (name) {
@@ -46,10 +47,12 @@ var userNames = (function () {
     get: get,
     getGuestName: getGuestName
   };
+  
 }());
 
 // export function for listening to the socket
 module.exports = function (socket) {
+
   var name = userNames.getGuestName();
 
   // send the new user their name and a list of users

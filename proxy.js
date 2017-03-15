@@ -1,7 +1,4 @@
-var proxy=require('http-proxy').createProxyServer({
-     target: 'ws://localhost:3001',
-     ws:true
-}),
+var  proxy=require('http-proxy').createProxyServer({}),
      http=require('http');
 
 proxy.on(function(err,req,res){
@@ -45,6 +42,7 @@ var server=http.createServer(function(req,res){
 
 });
 
-console.log("listening on port 3000")
+
+console.log("Proxy-server port: 3000 domain: molichat")
 
 server.listen(3000);

@@ -49,7 +49,7 @@ io.sockets.on('connection', socket);
 // Start server
 
 app.listen(3001, function(){
-  //console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  console.log("Express-server port : %d mode : %s", app.address().port, app.settings.env);
 });
 
 require('./proxy');

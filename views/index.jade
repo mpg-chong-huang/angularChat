@@ -1,32 +1,33 @@
 extends layout
 
 block body
-  h1 Web Chatroom
-  div(ng-controller='AppCtrl')
-    .col
-      h3 Messages
+
+  .app(ng-controller='AppCtrl',ng-cloak)
+
+    .msg-box
       .overflowable
-        p(ng-repeat='message in messages',
-          ng-class='{alert: message.user == "chatroom"}') {{message.user}}: {{message.text}}
+        .msg(ng-repeat='message in messages',
+          ng-class='{alert: message.user == "System"}') {{message.user}}: {{message.text}}
 
-    .col
-      h3 Users
+      form.msg-send(ng-submit='sendMessage()')
+        input.m(size='60', ng-model='message',placeholder='message...',value='')
+        input.s(type='submit', value='Send')
+
+    .msg-list
+      .operate
+        .title All Users
+        .oper-list
+          i(class="fa fa-times" ng-click = 'close()')
+          i(class="fa fa-cog" ng-click='goChange = !goChange')
+        form.change-name(ng-submit='changeName()',ng-show='goChange')
+            label Input your Name
+            input.newName(ng-model='newName',placeholder='New Name...')
+            input.submitName(type='submit', value='Change Name')
       .overflowable
-        p(ng-repeat='user in users') {{user}}
-
-    .clr
-      form(ng-submit='sendMessage()')
-        | Message: 
-        input(size='60', ng-model='message')
-        input(type='submit', value='Send')
-
-    .clr
-      h3 Change your name
-      p Your current user name is {{name}}
-      form(ng-submit='changeName()')
-        input(ng-model='newName')
-        input(type='submit', value='Change Name')
-
+        .user(ng-repeat="user in users.slice().reverse()") {{user}}
+      .version(app-version)
+ 
+  
   script(src='js/lib/angular/angular.js')
   script(src='/socket.io/socket.io.js')
   script(src='js/app.js')

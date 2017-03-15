@@ -10,6 +10,7 @@ function AppCtrl($scope, socket) {
   socket.on('init', function (data) {
     $scope.name = data.name;
     $scope.users = data.users;
+    console.log($scope.name);
   });
 
   socket.on('send:message', function (message) {
@@ -22,16 +23,17 @@ function AppCtrl($scope, socket) {
 
   socket.on('user:join', function (data) {
     $scope.messages.push({
-      user: 'chatroom',
+      user: 'System',
       text: 'User ' + data.name + ' has joined.'
     });
     $scope.users.push(data.name);
   });
 
   // add a message to the conversation when a user disconnects or leaves the room
+  
   socket.on('user:left', function (data) {
     $scope.messages.push({
-      user: 'chatroom',
+      user: 'System',
       text: 'User ' + data.name + ' has left.'
     });
     var i, user;
@@ -45,7 +47,6 @@ function AppCtrl($scope, socket) {
   });
 
   // Private helpers
-  // ===============
 
   var changeName = function (oldName, newName) {
     // rename user in list of users
@@ -57,13 +58,12 @@ function AppCtrl($scope, socket) {
     }
 
     $scope.messages.push({
-      user: 'chatroom',
+      user: 'System',
       text: 'User ' + oldName + ' is now known as ' + newName + '.'
     });
   }
 
   // Methods published to the scope
-  // ==============================
 
   $scope.changeName = function () {
     socket.emit('change:name', {
@@ -79,22 +79,34 @@ function AppCtrl($scope, socket) {
         $scope.newName = '';
       }
     });
+
+    $scope.goChange = false;
+
   };
 
   $scope.messages = [];
 
   $scope.sendMessage = function () {
-    socket.emit('send:message', {
-      message: $scope.message
-    });
+    
 
-    // add the message to our model locally
-    $scope.messages.push({
-      user: $scope.name,
-      text: $scope.message
-    });
-
+    if($scope.message==null){
+      //empty handle
+    }else{
+      socket.emit('send:message', {
+        message: $scope.message
+      });
+      // add the message to our model locally
+      $scope.messages.push({
+        user: $scope.name,
+        text: $scope.message
+      });
+    }
+    
     // clear message box
     $scope.message = '';
   };
+
+  $scope.close = function(){
+    alert('you cant close me , i am under construction');
+  }
 }
