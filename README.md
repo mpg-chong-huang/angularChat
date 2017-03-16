@@ -1,5 +1,7 @@
 ### Angular Chat app + jade + socket
 
+app is required with http-proxy if just for study and please remove the proxy.js requirement
+
 First, grab the dependencies with npm:
 
     npm install
