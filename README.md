@@ -8,3 +8,5 @@ First, grab the dependencies with npm:
 Then run the app like so:
 
     node app.js
+    
+update version1.1 with emoji picker
