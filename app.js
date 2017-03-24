@@ -40,7 +40,7 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // redirect all others to the index (HTML5 history)
-app.get('*', routes.index);
+//app.get('*', routes.index);
 
 // Socket.io Communication
 
@@ -51,5 +51,3 @@ io.sockets.on('connection', socket);
 app.listen(3001, function(){
   console.log("Express-server port : %d mode : %s", app.address().port, app.settings.env);
 });
-
-require('./proxy');

@@ -13,25 +13,65 @@ input, a, table{
 .app{
  	width:622px;
  	overflow: hidden;
+ 	float: left;
 	background: #fff;
 	background-color: #fff;
+	-webkit-transition: all 0.3s ease-in-out;
+  	-moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-
+.app-close{
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+}
+.app-open{
+ 	width:622px;
+ 	height: 407px;
+	border-radius: 2px;
+}
+.app-triger{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	color:#00bd71;
+	border-radius: 15px;
+	cursor: pointer;
+}
+.app-triger i{
+	padding: 7px;
+}
+.msg-count{
+	padding:2px 3px 1px 2px;
+	top: -5px;
+	left:20px;
+	border-radius:10px;
+	background: #f44336;
+	color: #fff;
+	font-family: arial;
+	font-size: 9px;
+	position: absolute;
+}
 .msg-box {
   	float: left;
- 	width:400px;
+ 	width:398px;
  	padding: 10px;
   	border-left: 1px solid #eee;
   	border-right: 1px solid #eee;
 }
 
-.msg-box .overflowable {
+.msg-container{
   height: 320px;
   overflow-y: auto;
 }
+.msg-box .overflowable {
+  height: 320px;
+  overflow-y: auto;
+  padding-top: 20px;
+}
 .msg{
-	display: list-item;
-    text-align: -webkit-match-parent;
+	margin-bottom: 10px;
 }
 .msg-list{
 	float: left;
@@ -43,7 +83,7 @@ input, a, table{
 	position: relative;
 }
 .msg-list .overflowable {
-  height: 325px;
+  height: 345px;
   overflow-y: auto;
 }
 .operate .title{
@@ -90,10 +130,13 @@ input, a, table{
 .msg-send{
 	border-top: 1px solid #eee;
 	padding-top: 10px;
+	position: relative;
 }
 .msg-send .m{
-	width: 300px;
-	padding:8px 10px;
+	width: 290px;
+	float: left;
+	padding:11px 2px 8px 0px;
+	margin-left: 30px;
 	font-size: 1em;
 	border: none;
 	opacity: .3;
@@ -103,8 +146,10 @@ input, a, table{
 	opacity: 1;
 }
 .msg-send .s{
+	float: right;
 	width: 70px;
 	height: 34px;
+	margin-top: 5px;
 	font-size: 1em;
 	border: none;
 	border-radius: 5px;

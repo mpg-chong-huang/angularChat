@@ -1,6 +1,5 @@
-# Angular Chat app + jade + socket
 
-app is required with http-proxy if just for study and please remove the proxy.js requirement
+## Running it
 
 First, grab the dependencies with npm:
 
@@ -9,5 +8,3 @@ First, grab the dependencies with npm:
 Then run the app like so:
 
     node app.js
-    
-demo: www.molichat.com:3000

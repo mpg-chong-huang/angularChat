@@ -45,4 +45,4 @@ var server=http.createServer(function(req,res){
 
 console.log("Proxy-server port: 3000 domain: molichat")
 
-server.listen(3000);
+server.listen(81);

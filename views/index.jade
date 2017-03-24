@@ -2,22 +2,26 @@ extends layout
 
 block body
 
-  .app(ng-controller='AppCtrl',ng-cloak)
-
+  .app(ng-class="{'open':'app-open','close':'app-close'}[appstyle]",ng-controller='AppCtrl',ng-cloak)
+    .app-triger
+      i(class='fa fa-commenting',ng-click="appstyle='open'") 
     .msg-box
-      .overflowable
-        .msg(ng-repeat='message in messages',
-          ng-class='{alert: message.user == "System"}') {{message.user}}: {{message.text}}
+      .overflowable(schroll-bottom='messages')
+          .msg(ng-repeat='message in messages',
+            ng-class='{alert: message.user == "System"}') 
+            span(ng-bind='message.user')
+            span :
+            span(ng-bind-html='snippet(message.text)')
 
       form.msg-send(ng-submit='sendMessage()')
-        input.m(size='60', ng-model='message',placeholder='message...',value='')
+        input.m(size='60',ng-model='message',placeholder='message...',value='',data-emojiable='true')
         input.s(type='submit', value='Send')
 
     .msg-list
       .operate
         .title All Users
         .oper-list
-          i(class="fa fa-times" ng-click = 'close()')
+          i(class="fa fa-dot-circle-o" ng-click="appstyle='close'")
           i(class="fa fa-cog" ng-click='goChange = !goChange')
         form.change-name(ng-submit='changeName()',ng-show='goChange')
             label Input your Name
@@ -28,10 +32,21 @@ block body
       .version(app-version)
  
   
-  script(src='js/lib/angular/angular.js')
+  script(src='js/lib/angular/angular.min.js')
+  script(src='js/lib/angular/angular-sanitize.min.js')
+  script(src='js/lib/jquery/jquery.min.js')
   script(src='/socket.io/socket.io.js')
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')
   script(src='js/filters.js')
   script(src='js/directives.js')
+
+
+  script(src='js/lib/emoji/js/nanoscroller.min.js')
+  script(src='js/lib/emoji/js/tether.min.js')
+  script(src='js/lib/emoji/js/config.js')
+  script(src='js/lib/emoji/js/util.js')
+  script(src='js/lib/emoji/js/jquery.emojiarea.js')
+  script(src='js/lib/emoji/js/emoji-picker.js')
+

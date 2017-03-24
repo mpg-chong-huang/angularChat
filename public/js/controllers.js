@@ -2,15 +2,16 @@
 
 /* Controllers */
 
-function AppCtrl($scope, socket) {
 
-  // Socket listeners
+angular.module('myApp.controllers', [])
+.controller('AppCtrl', function ($scope, socket,$sce) {
+  
+// Socket listeners
   // ================
 
   socket.on('init', function (data) {
     $scope.name = data.name;
     $scope.users = data.users;
-    console.log($scope.name);
   });
 
   socket.on('send:message', function (message) {
@@ -66,6 +67,7 @@ function AppCtrl($scope, socket) {
   // Methods published to the scope
 
   $scope.changeName = function () {
+
     socket.emit('change:name', {
       name: $scope.newName
     }, function (result) {
@@ -84,12 +86,20 @@ function AppCtrl($scope, socket) {
 
   };
 
+  $scope.triger = false;
+  $scope.count = false;
+
   $scope.messages = [];
 
-  $scope.sendMessage = function () {
-    
+  $scope.snippet = function(msg) {
+      return $sce.trustAsHtml(msg);
+  };
 
-    if($scope.message==null){
+  $scope.sendMessage = function () {
+
+    $scope.message =$('div.m').html();
+
+    if($scope.message==''||$scope.message==null){
       //empty handle
     }else{
       socket.emit('send:message', {
@@ -104,9 +114,9 @@ function AppCtrl($scope, socket) {
     
     // clear message box
     $scope.message = '';
+    $('div.m').html('');
+
   };
 
-  $scope.close = function(){
-    alert('you cant close me , i am under construction');
-  }
-}
+});
+
